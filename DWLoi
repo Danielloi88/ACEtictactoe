@@ -1,27 +1,24 @@
-import os       
-    
 board = [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']    
 player = 1
    
-########Parameters##########    
+########win Flags##########    
 Win = 1    
 Draw = -1    
 Running = 0    
 Stop = 1    
 ###########################    
 Game = Running    
-Mark = 'X'    
+Mark = 'X'
 
 #To print player's name
-if __name__ == "__main__":
  
-    print("Player A")
-    player1 = input("Enter the name : ")
-    print("\n")
+print("Player A")
+player1 = input("Enter the name : ")
+print("\n")
     
-    print("Player B")
-    player2 = input("Enter the name : ")
-    print("\n")
+print("Player B")
+player2 = input("Enter the name : ")
+print("\n")
      
 
 #To draw the board
@@ -33,7 +30,7 @@ def Board():
     print(" %c | %c | %c " % (board[7],board[8],board[9]))    
     print("   |   |   ")    
    
-#To check if position is still empty   
+#To check if position is still empty
 def CheckPosition(x):    
     if(board[x] == ' '):    
         return True    
@@ -69,23 +66,27 @@ print()
 print()    
 print("Please Wait...")    
 while(Game == Running):    
-    #os.system('cls')    
-    Board()    
+      
+    Board()
+    #Player A is for odd numbers
+    #Player B is for even numbers
     if(player % 2 != 0):    
-        print("Player A's Turn")    
+        print("Player A's Turn") 
+        #changing Mark value according to player
         Mark = 'X'    
     else:    
-        print("Player B's Turn")    
+        print("Player B's Turn")
+        #changing Mark value according to player
         Mark = 'O'    
     choice = int(input("Chose a number between [1-9] to mark : "))
     
+    #Assigning Mark value to Board
     if(CheckPosition(choice)):    
         board[choice] = Mark    
         player+=1
         CheckWin()
 
-    
-#os.system('cls')    
+        
 Board()    
 if(Game==Draw):    
     print("Draw Game")    
